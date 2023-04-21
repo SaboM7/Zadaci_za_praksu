@@ -54,25 +54,21 @@ merged_table['averageRating'] = merged_table['averageRating'].fillna(0.0)      #
 
 
 # -----7----- a)
-# list_of_titles = list(merged_table["originalTitle"].values)
-# list_of_titles.insert(0,"The French Connection")
+# list_of_titles = list(merged_table["originalTitle"].values)               #pravljenje liste svih orginalnih naziva videa
+# list_of_titles.insert(0,"The French Connection")                          #ubacivanje naziva sa kojim poredimo na prvo mesto
 #
-# # Initialize an instance of tf-idf Vectorizer
-# tfidf_vectorizer = TfidfVectorizer()
+# tfidf_vectorizer = TfidfVectorizer()                                      #inicijalizacija Tfidf objekta za pravljenje vektora
 #
-# # Generate the tf-idf vectors for the corpus
-# tfidf_matrix = tfidf_vectorizer.fit_transform(list_of_titles)
+# tfidf_matrix = tfidf_vectorizer.fit_transform(list_of_titles)             # pravljenje matrice vektora (normalizovanih)
 # sim_column = []
 #
-# for i in range(1,len(list_of_titles)) :
+# for i in range(1,len(list_of_titles)) :                                   # petlja za kosinusno poredjenje zadatog naslova i svih ostalih naslova
 #     cosine_sim = cosine_similarity(tfidf_matrix[0], tfidf_matrix[i])
-#     #print(cosine_sim)
 #     cosine_sim = round(float(cosine_sim), 4)
 #     sim_column.append(cosine_sim)
-# merged_table["similarity"] = sim_column
-# merged_table.to_csv("finala.csv", index=False)
+# merged_table["similarity"] = sim_column                                   # upisivanje vrednosti slicnosti u kolonu "similarity"
 # temp_table = merged_table.sort_values("similarity",ascending=False).head(10)
-# print(temp_table)
+# print(temp_table)                                                         # ispisivanje 10 redova sa najvecom slicnoscu
 
 
 # -----7----- b)
@@ -89,7 +85,6 @@ merged_table['averageRating'] = merged_table['averageRating'].fillna(0.0)      #
 # for title in list_of_titles:
 #     temp_title = nlp(title)
 #     title_sim = title1.similarity(temp_title)
-#     print(title_sim)
 #     list_of_simmilarities.append(title_sim)
 #
 # merged_table["similarity"] = list_of_simmilarities
