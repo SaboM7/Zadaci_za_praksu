@@ -62,22 +62,21 @@ merged_table['averageRating'] = merged_table['averageRating'].fillna(0.0)      #
 #
 # # Generate the tf-idf vectors for the corpus
 # tfidf_matrix = tfidf_vectorizer.fit_transform(list_of_titles)
-# print(len(list_of_titles))
-# print(tfidf_matrix[0])
 # sim_column = []
 #
 # for i in range(1,len(list_of_titles)) :
 #     cosine_sim = cosine_similarity(tfidf_matrix[0], tfidf_matrix[i])
 #     #print(cosine_sim)
+#     cosine_sim = round(float(cosine_sim), 4)
 #     sim_column.append(cosine_sim)
 # merged_table["similarity"] = sim_column
-# merged_table.to_csv("final.csv", index=False)
+# merged_table.to_csv("finala.csv", index=False)
 # temp_table = merged_table.sort_values("similarity",ascending=False).head(10)
 # print(temp_table)
 
 
 # -----7----- b)
-
+#
 # list_of_simmilarities = []
 # list_of_docs = []
 # list_of_titles = list(merged_table["originalTitle"].values)
@@ -94,9 +93,9 @@ merged_table['averageRating'] = merged_table['averageRating'].fillna(0.0)      #
 #     list_of_simmilarities.append(title_sim)
 #
 # merged_table["similarity"] = list_of_simmilarities
-# merged_table.to_csv("final.csv", index=False)
-
-
+# merged_table.to_csv("finalb.csv", index=False)
+#
+#
 # temp_table = merged_table.sort_values("similarity",ascending=False).head(10)
 # print(temp_table)
 
@@ -121,3 +120,14 @@ merged_table['averageRating'] = merged_table['averageRating'].fillna(0.0)      #
 # rate_float = res_parsed["bpi"]["USD"]["rate_float"]                               # uzimanje vrednosti rate_float iz USD iz bpi
 # print(rate_float)
 
+
+
+#-----Dodatni zadatak-----
+
+#Možemo uzeti vrednost te kategorije koje trazimo u promenljivu vrednost_kategorije.
+# Zatim izvrsiti sledeci algoritam:
+# for predmet in lista_predmeta:
+    #if predmet.kategorija == vrednost_kategorije:
+        #lista_predmeta.remove(predmet)
+        #lista_predmeta.insert(0,predmet)
+#Ovim postupkom bi svi predmeti iz zeljene kategorije bili prvi na listi
