@@ -44,7 +44,7 @@ def calc_maxcount_num_of_words(list_of_tariff_nums: list, cut_tarrif: int, array
 
 table_data = pd.read_excel('WSC Input.xlsx', dtype={"Description": str, "TariffNumber": str})      # ucitavanje excel dokumenta u memoriju
 
-list_of_tariff_nums = list(table_data["TariffNumber"].values)
+list_of_tariff_nums = list(table_data["TariffNumber"].values)           # uzimanje svih vrednosti Tariff_number-a
 
 for i in range(len(list_of_tariff_nums)):
     if len(list_of_tariff_nums[i]) == 9:
@@ -55,7 +55,7 @@ list_of_descriptions = table_data["Description"].values                 # uziman
 
 vectorizer = CountVectorizer()
 
-cv_fit = vectorizer.fit_transform(list_of_descriptions)                             # vektorizacija svih reci
+cv_fit = vectorizer.fit_transform(list_of_descriptions)                             # vektorizacija svih reci u tf-idf vektore
 arr_of_word_counts = cv_fit.toarray()
 word_list = vectorizer.get_feature_names_out()                           # izdvajanje jedinstvenih reci
 
@@ -64,7 +64,7 @@ dict_of_words = dict(zip(word_list, np.asarray(cv_fit.sum(axis=0))[0]))       # 
 dict_for_table = {"Word": list(dict_of_words.keys()), "Total Count": list(dict_of_words.values())}          # pravljenje dict za pravljenje tabele
 ID_column = []
 for index, word in enumerate(word_list, 1):
-    ID_column.append(index)
+    ID_column.append(index)                                             # pravljenje liste ID-ova
 table_of_words = pd.DataFrame.from_dict(data=dict_for_table)            # pravljenje tabele sa recima i njihovim pojavljivanjem
 table_of_words.insert(0, "ID", ID_column)                                 # dodavanje kolone ID sa vrednostima
 
