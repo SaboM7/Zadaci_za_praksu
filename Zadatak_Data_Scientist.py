@@ -16,7 +16,6 @@ merged_table = table1.merge(table2, on="movieID", how="inner")     #spajanje tab
 #
 # merged_table.to_csv("merged_table.csv",index= False)                      #cuvanje spojene tabele
 #
-#
 # # -----2-----
 # num_of_no_isGood = merged_table['isGood'].isnull().sum()                  # prebrojavanje nepopunjenih polja u isGood koloni
 #
