@@ -48,7 +48,7 @@ list_of_tariff_nums = list(table_data["TariffNumber"].values)
 
 for i in range(len(list_of_tariff_nums)):
     if len(list_of_tariff_nums[i]) == 9:
-        list_of_tariff_nums[i] = "0" + list_of_tariff_nums[i]           # dodavanje 0 na pocetak tariff_number ako ima 9 karatketa
+        list_of_tariff_nums[i] = "0" + list_of_tariff_nums[i]           # dodavanje "0" na pocetak tariff_number ako ima 9 karatketa
 
 
 list_of_descriptions = table_data["Description"].values                 # uzimanje svih opisa i smestanje u promenljivu
